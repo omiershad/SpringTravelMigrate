@@ -51,4 +51,7 @@ public enum Cart {
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "cart")
     private Set<CartItem> cartItem = new HashSet<>(); // do we need this?
 
+    private enum StatusType {
+        pending, ordered, canceled
+    }
 }
