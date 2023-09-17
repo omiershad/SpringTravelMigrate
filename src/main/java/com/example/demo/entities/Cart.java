@@ -32,8 +32,9 @@ public class Cart {
     @Column(name="party_size")
     private int party_size;
 
-    @Column(name="status")
+    /* @Column(name="status")
     private StatusType status;
+    */
 
     @Column(name="create_date")
     @CreationTimestamp
@@ -49,5 +50,9 @@ public class Cart {
 
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "cart")
     private Set<CartItem> cartItems = new HashSet<>();
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private StatusType status;
 
 }
