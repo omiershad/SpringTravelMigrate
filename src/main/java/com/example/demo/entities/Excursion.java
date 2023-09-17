@@ -1,4 +1,4 @@
-package entities;
+package com.example.demo.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,10 +12,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "excursions")
-@Getter
+@Table(name="excursions")
 @Setter
-public enum Excursion {
+@Getter
+public class Excursion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="excursion_id")
@@ -45,5 +46,6 @@ public enum Excursion {
     @ManyToMany
     @JoinTable(name="excursion_cartitem", joinColumns=@JoinColumn(name="cart_item_id"),
             inverseJoinColumns=@JoinColumn(name="excursion_id"))
-    private Set<CartItem> cartitems = new HashSet<>();
+    private Set<CartItem> cartItems = new HashSet<>();
+
 }

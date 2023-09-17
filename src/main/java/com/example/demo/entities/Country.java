@@ -1,4 +1,4 @@
-package entities;
+package com.example.demo.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,17 +10,17 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "divisions")
+@Table(name="countries")
 @Getter
 @Setter
-public enum Division {
+public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="division_id")
+    @Column(name="country_id")
     private Long id;
 
-    @Column(name="division")
-    private String division_name;
+    @Column(name="country")
+    private String country_name;
 
     @Column(name="create_date")
     @CreationTimestamp
@@ -30,16 +30,6 @@ public enum Division {
     @UpdateTimestamp
     private Date last_update;
 
-    @ManyToOne
-    @JoinColumn(name="country_id", nullable = false)
-    private Country country;
-
-    /*
-    @Column(name = "country_id")
-    private Long countryID;
-     */
-
-    @OneToMany(cascade=CascadeType.ALL, mappedBy = "division")
-    private Set<Customer> customers;
-
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "country")
+    private Set<Division> divisions;
 }

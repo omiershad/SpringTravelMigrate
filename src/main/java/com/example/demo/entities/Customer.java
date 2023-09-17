@@ -1,4 +1,4 @@
-package entities;
+package com.example.demo.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -11,11 +11,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name="customers")
 @Getter
 @Setter
-public enum Customer {
-
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="customer_id")
@@ -24,7 +23,7 @@ public enum Customer {
     @Column(name="customer_first_name")
     private String firstName;
 
-    @Column(name="customer_last_name")
+    @Column(name="customer_Last_name")
     private String lastName;
 
     @Column(name="address")
@@ -45,9 +44,10 @@ public enum Customer {
     private Date last_update;
 
     @ManyToOne
-    @JoinColumn(name = "division_id", nullable = false)
+    @JoinColumn(name="division_id", nullable = false)
     private Division division;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    private Set<Cart> carts = new HashSet<>(); // check if code is right? could be not the second half of = last
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "customer")
+    private Set<Cart> carts= new HashSet<>();
+
 }

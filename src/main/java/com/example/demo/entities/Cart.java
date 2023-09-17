@@ -1,4 +1,4 @@
-package entities;
+package com.example.demo.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,12 +13,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "carts")
+@Table(name="carts")
 @Getter
 @Setter
-// do we need this?
 @ToString
-public enum Cart {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="cart_id")
@@ -27,31 +26,28 @@ public enum Cart {
     @Column(name="order_tracking_number")
     private String orderTrackingNumber;
 
-    @Column(name="Package_Price")
+    @Column(name="package_price")
     private BigDecimal package_price;
 
-    @Column(name="Party_Size")
+    @Column(name="party_size")
     private int party_size;
 
     @Column(name="status")
     private StatusType status;
 
-    @Column(name="Create_Date")
+    @Column(name="create_date")
     @CreationTimestamp
     private Date create_date;
 
-    @Column(name="Last_Update")
+    @Column(name="last_update")
     @UpdateTimestamp
     private Date last_update;
 
     @ManyToOne
-    @JoinColumn(name="customer_ID", nullable = false)
+    @JoinColumn(name="customer_id", nullable = false)
     private Customer customer;
 
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "cart")
-    private Set<CartItem> cartItem = new HashSet<>(); // do we need this?
+    private Set<CartItem> cartItems = new HashSet<>();
 
-    private enum StatusType {
-        pending, ordered, canceled
-    }
 }

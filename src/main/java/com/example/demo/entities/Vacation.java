@@ -1,4 +1,4 @@
-package entities;
+package com.example.demo.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -11,10 +11,10 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "vacations")
+@Table(name="vacations")
 @Getter
 @Setter
-public enum Vacation {
+public class Vacation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="vacation_id")

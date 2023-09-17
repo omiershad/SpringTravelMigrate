@@ -1,4 +1,4 @@
-package entities;
+package com.example.demo.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -11,10 +11,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "cart_items")
+@Table(name="cart_items")
 @Getter
 @Setter
-public enum CartItem {
+public class CartItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="cart_item_id")
@@ -25,7 +26,7 @@ public enum CartItem {
     private Vacation vacation;
 
     @ManyToMany(cascade=CascadeType.ALL, mappedBy = "cartItems")
-    private Set<Excursion> excursions = new HashSet<>(); //do we need this?
+    private Set<Excursion> excursions = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name="cart_id", nullable = false)
@@ -38,4 +39,5 @@ public enum CartItem {
     @Column(name="last_update")
     @UpdateTimestamp
     private Date last_update;
+
 }
