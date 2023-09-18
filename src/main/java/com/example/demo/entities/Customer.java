@@ -50,4 +50,6 @@ public class Customer {
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "customer")
     private Set<Cart> carts= new HashSet<>();
 
+    public Customer(String firstName, String lastName, String address, String postal_code, String phone) {
+    }
 }
