@@ -1,7 +1,9 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -14,6 +16,8 @@ import java.util.Set;
 @Table(name="customers")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +54,12 @@ public class Customer {
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "customer")
     private Set<Cart> carts= new HashSet<>();
 
-    public Customer(String firstName, String lastName, String address, String postal_code, String phone) {
+    public Customer(String firstName, String lastName, String address, String postal_code, String phone, Division division) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.postal_code = postal_code;
+        this.phone = phone;
+        this.division = division;
     }
 }
