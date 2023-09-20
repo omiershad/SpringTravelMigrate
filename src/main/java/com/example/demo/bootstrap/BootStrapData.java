@@ -23,18 +23,34 @@ public class BootStrapData implements CommandLineRunner {
 
         // Division divOne = new Division();
         // divOne.setId(29L);
-        Division divOne = divisionRepository.findById(29L).orElse(null);
-        Customer adam = new Customer("Adam", "Avery", "333 Arlo Ave", "33333", "555-555-3333", divOne);
-        // divOne.getCustomers().add(adam);
-        // adam.getDivision().setDivision_name(divOne.getDivision_name());
+        Division divOne = divisionRepository.findById(26L).orElse(null);
+        Customer adam = new Customer("Adam", "Avery", "3125 Arlington Avenue", "94523", "510-812-5621", divOne);
 
         customerRepository.save(adam);
 
+
+        Customer omid = new Customer("Omid", "Ershad", "32562 Lake Bridgecoin", "78210", "231-920-3921", divOne);
+
+        customerRepository.save(omid);
+
+        Customer jake = new Customer("Jake", "Crandal", "4111 Gary Street", "71231", "510-764-6860", divOne);
+
+        customerRepository.save(jake);
+
+        Customer hayeda = new Customer("Hayeda", "Danishwar", "3020 Baxter Drive", "21023", "920-492-9230", divOne);
+
+        customerRepository.save(hayeda);
+
+        Customer arshad = new Customer("Arshad", "Dashra", "2010 Yekta Lane", "50125", "291-2021-4921", divOne);
+
+        customerRepository.save(arshad);
         //if (customerRepository.count() < 2) {
         //    customerRepository.save(adam);
         //}
 
-        System.out.println("it works OMG");
+        System.out.println("Started in Bootstrap:");
+
+        System.out.println("Number of customers: " + customerRepository.count());
 
         /* Customer omid = new Customer("Omid", "Ershad", "32562 Lake Summer Drive", "94537", "5108156543");
         Division one = new Division(53451L);
