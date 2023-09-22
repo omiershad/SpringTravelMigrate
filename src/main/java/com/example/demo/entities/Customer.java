@@ -63,8 +63,8 @@ public class Customer {
         this.division = division;
     }
 
-    /* public void add(Cart cart) {
+    public void add(Cart cart) {
         carts.add(cart);
         cart.setCustomer(this);
-    } */
+    }
 }
