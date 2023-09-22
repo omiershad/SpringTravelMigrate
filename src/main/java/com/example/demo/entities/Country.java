@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -31,5 +32,11 @@ public class Country {
     private Date last_update;
 
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "country")
-    private Set<Division> divisions;
+    private Set<Division> divisions = new HashSet<>();
+
+    /* public void add(Division division) {
+        divisions.add(division);
+        division.setCountry(this);
+
+    } */
 }

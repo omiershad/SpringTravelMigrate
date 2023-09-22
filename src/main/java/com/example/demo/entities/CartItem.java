@@ -25,7 +25,7 @@ public class CartItem {
     @JoinColumn(name="vacation_id", nullable = false)
     private Vacation vacation;
 
-    @ManyToMany(cascade=CascadeType.ALL, mappedBy = "cartItems")
+    @ManyToMany(cascade=CascadeType.ALL, mappedBy = "cartitems")
     private Set<Excursion> excursions = new HashSet<>();
 
     @ManyToOne

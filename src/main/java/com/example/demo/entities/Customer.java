@@ -27,7 +27,7 @@ public class Customer {
     @Column(name="customer_first_name", nullable = false)
     private String firstName;
 
-    @Column(name="customer_Last_name", nullable = false)
+    @Column(name="customer_last_name", nullable = false)
     private String lastName;
 
     @Column(name="address", nullable = false)
@@ -62,4 +62,9 @@ public class Customer {
         this.phone = phone;
         this.division = division;
     }
+
+    /* public void add(Cart cart) {
+        carts.add(cart);
+        cart.setCustomer(this);
+    } */
 }

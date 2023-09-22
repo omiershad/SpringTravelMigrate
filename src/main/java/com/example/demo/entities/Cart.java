@@ -3,7 +3,6 @@ package com.example.demo.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -16,7 +15,6 @@ import java.util.Set;
 @Table(name="carts")
 @Getter
 @Setter
-@ToString
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,10 +47,13 @@ public class Cart {
     private Customer customer;
 
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "cart")
-    private Set<CartItem> cartItems = new HashSet<>();
+    private Set<CartItem> cartItem = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private StatusType status;
 
+    public void add(CartItem cartItem) {
+        this.cartItem.add(cartItem);
+        }
 }
